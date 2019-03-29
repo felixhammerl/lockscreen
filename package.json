@@ -1,0 +1,15 @@
+{
+  "name": "lockscreen",
+  "version": "0.0.0",
+  "description": "Listens to your yubikey being removed and locks your mac.",
+  "main": "index.js",
+  "dependencies": {
+    "usb": "^1.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
