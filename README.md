@@ -12,6 +12,8 @@ Run `./install.sh` in the project root for the guided setup. Or execute the step
 
 Run `./uninstall.sh` to stop and remove the agent.
 
+**NB**: You will have to configure the path in the plist, b/c `launchd` does not support globbing anymore. So `~/` is not available. PRs welcome for this problem :)
+
 ## launchd 101
 
 * Loading a job: `launchctl load ~/Library/LaunchAgents/com.felixhammerl.lockscreen.plist`
