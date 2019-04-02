@@ -1,11 +1,3 @@
-//
-//  main.swift
-//  lock
-//
-//  Created by Felix Hammerl on 02.04.19.
-//  Copyright © 2019 Felix Hammerl. All rights reserved.
-//
-
 import Darwin
 import IOKit
 import IOKit.usb
