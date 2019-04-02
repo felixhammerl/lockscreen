@@ -5,25 +5,17 @@ cd "$(dirname "$0")" || exit 1
 
 LOCKSCREEN_BINARY="lockscreen"
 LOCKSCREEN_SOURCE="lockscreen.swift"
-CONFIG_FILE="cfg.json"
 PLIST_FILE="com.felixhammerl.lockscreen.plist"
 AGENT_NAME="com.felixhammerl.lockscreen"
 AGENTS_FOLDER="$HOME/Library/LaunchAgents"
 
 echo "Configuring the lockscreen agent..."
 
-if [ ! -f "$LOCKSCREEN_BINARY" ]; then
+if [ ! -f "/usr/local/bin/$LOCKSCREEN_BINARY" ]; then
 	echo "Compiling binary..."
 	swiftc "$LOCKSCREEN_SOURCE"
-	echo "Done."
-fi
-
-if [ ! -f "$CONFIG_FILE" ]; then
-	echo "Configuring yubikey USB data..."
-	system_profiler SPUSBDataType
-	read -p "Please enter Vendor ID (without \"0x\"): " -r VID
-	read -p "Please enter Product ID (without \"0x\"): " -r PID
-  echo "{ \"vid\": $(( 16#$VID )), \"pid\": $(( 16#$PID ))}" > "$CONFIG_FILE"
+	echo "Moving to /usr/local/bin ..."
+  mv "$LOCKSCREEN_BINARY" /usr/local/bin
 	echo "Done."
 fi
 

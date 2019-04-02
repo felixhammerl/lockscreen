@@ -5,11 +5,8 @@
     <key>Label</key>
     <string>com.felixhammerl.lockscreen</string>
 
-    <key>WorkingDirectory</key>
-    <string>/Users/felixhammerl/projects/lockscreen</string>
-
     <key>Program</key>
-		<string>/Users/felixhammerl/projects/lockscreen/lockscreen</string>
+    <string>/usr/local/bin/lockscreen</string>
 
     <key>RunAtLoad</key>
 		<true/>
