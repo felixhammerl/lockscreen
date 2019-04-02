@@ -5,8 +5,20 @@
     <key>Label</key>
     <string>com.felixhammerl.lockscreen</string>
 
-    <key>ProgramArguments</key>
-    <array><string>/Users/felixhammerl/projects/lockscreen/main.sh</string></array>
+    <key>WorkingDirectory</key>
+    <string>/Users/felixhammerl/projects/lockscreen</string>
+
+    <key>Program</key>
+		<string>/Users/felixhammerl/projects/lockscreen/lockscreen</string>
+
+    <key>RunAtLoad</key>
+		<true/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
 	</dict>
 </plist>
 
