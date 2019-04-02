@@ -4,7 +4,7 @@
 cd "$(dirname "$0")" || exit 1
 
 LOCKSCREEN_BINARY="lockscreen"
-LOCKSCREEN_SOURCE="lockscreen.c"
+LOCKSCREEN_SOURCE="lockscreen.swift"
 CONFIG_FILE="cfg.json"
 PLIST_FILE="com.felixhammerl.lockscreen.plist"
 AGENT_NAME="com.felixhammerl.lockscreen"
@@ -14,7 +14,7 @@ echo "Configuring the lockscreen agent..."
 
 if [ ! -f "$LOCKSCREEN_BINARY" ]; then
 	echo "Compiling binary..."
-	clang -framework login -F /System/Library/PrivateFrameworks --output="$LOCKSCREEN_BINARY" "$LOCKSCREEN_SOURCE"
+	swiftc "$LOCKSCREEN_SOURCE"
 	echo "Done."
 fi
 
@@ -27,17 +27,18 @@ if [ ! -f "$CONFIG_FILE" ]; then
 	echo "Done."
 fi
 
+echo "Terminating active agents..."
 PROCESS_RUNNING=$(launchctl list | grep -c "$AGENT_NAME")
 if [ $PROCESS_RUNNING != 0 ]; then
-  echo "Terminating other agents ..."
+  echo "Found $PROCESS_RUNNING agents ..."
 	launchctl stop "$AGENT_NAME"
 	launchctl unload "$AGENTS_FOLDER/$PLIST_FILE"
-	echo "Done."
+  echo "Done."
+else
+  echo "No agents found."
 fi
 
 echo "Starting the agent..."
 cp "$PLIST_FILE" "$AGENTS_FOLDER/$PLIST_FILE"
 launchctl load "$AGENTS_FOLDER/$PLIST_FILE"
-launchctl start "$AGENT_NAME"
-
 echo "Done."
