@@ -18,6 +18,7 @@ install: lockscreen
 		&& /bin/launchctl unload "$(AGENTS_DIR)/$(PLIST_FILE)" \
 		|| :
 	@echo "Copying $(PLIST_FILE) to $(AGENTS_DIR)"; \
+	/bin/mkdir -p "$(AGENTS_DIR)"; \
 	/bin/cp "$(PLIST_FILE)" "$(AGENTS_DIR)/$(PLIST_FILE)"
 	@echo "Loading LaunchAgent $(AGENT_NAME)"; \
 	/bin/launchctl load "$(AGENTS_DIR)/$(PLIST_FILE)"
