@@ -6,7 +6,7 @@
     <string>com.felixhammerl.lockscreen</string>
 
     <key>Program</key>
-    <string>/usr/local/bin/lockscreen</string>
+    <string>/opt/com.felixhammerl.lockscreen/lockscreen</string>
 
     <key>RunAtLoad</key>
 		<true/>

@@ -31,7 +31,7 @@ let notifierPtr = Unmanaged.passUnretained(notifier).toOpaque()
 var iterator: io_iterator_t = 0
 
 let internalQueue: DispatchQueue = DispatchQueue(label: "IODetector")
-let notifyPort: IONotificationPortRef = IONotificationPortCreate(kIOMasterPortDefault)
+let notifyPort: IONotificationPortRef = IONotificationPortCreate(kIOMainPortDefault)
 IONotificationPortSetDispatchQueue(notifyPort, internalQueue)
     
 let matchingDict = IOServiceMatching(kIOUSBDeviceClassName) as NSMutableDictionary
